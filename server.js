@@ -41,6 +41,8 @@ const RSS_PUBLISHERS = [
   { name: 'Grey Fox Games',      url: 'https://greyfoxgames.com/blogs/news.atom',      logo: '🦊' },
   { name: 'Chip Theory Games',   url: 'https://chiptheorygames.com/blogs/news.atom',   logo: '🎰' },
   { name: 'Restoration Games', url: 'https://restorationgames.com/feed/', logo: '♻️' },
+  { name: 'Days of Wonder',   url: 'https://www.daysofwonder.com/feed/',          logo: '🎡' },
+{ name: 'Board Game Wire',  url: 'https://boardgamewire.com/index.php/feed/',    logo: '📰' },
 ];
 
 // ── Publishers: HTML-scraping ───────────────────────────────
