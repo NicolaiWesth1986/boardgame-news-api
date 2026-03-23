@@ -44,6 +44,11 @@ const RSS_PUBLISHERS = [
   { name: 'Restoration Games', url: 'https://restorationgames.com/feed/', logo: '♻️' },
   { name: 'Days of Wonder',   url: 'https://www.daysofwonder.com/feed/',          logo: '🎡' },
 { name: 'Board Game Wire',  url: 'https://boardgamewire.com/index.php/feed/',    logo: '📰' },
+  { name: 'BoardGameGeek News',   url: 'https://boardgamegeek.com/rss/blog/1',          logo: '🎯' },
+{ name: 'Shut Up & Sit Down',   url: 'https://www.shutupandsitdown.com/feed/',         logo: '🪑' },
+{ name: 'Board Game Quest',     url: 'https://boardgamequest.com/feed/',               logo: '⚔️' },
+{ name: 'Meeple Mountain',      url: 'https://meeplemountain.com/feed/',               logo: '🏔️' },
+{ name: 'Opinionated Gamers',   url: 'https://opinionatedgamers.com/feed/',            logo: '💬' },
 ];
 
 // ── Publishers: HTML-scraping ───────────────────────────────
