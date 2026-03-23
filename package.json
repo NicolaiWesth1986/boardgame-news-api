@@ -1,14 +1,15 @@
 {
   "name": "boardgame-news-api",
-  "version": "1.0.0",
-  "description": "Brætspilsnyheder RSS API til braetspillet.dk",
+  "version": "2.0.0",
+  "description": "Brætspilsnyheder RSS + HTML scraper API til braetspillet.dk",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "rss-parser": "^3.13.0"
+    "rss-parser": "^3.13.0",
+    "cheerio": "^1.0.0"
   },
   "engines": {
     "node": ">=18"
