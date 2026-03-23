@@ -1,6 +1,7 @@
 const Parser = require('rss-parser');
 const express = require('express');
 const cheerio = require('cheerio');
+const fetch = require('node-fetch');
 
 // ── RSS Parser ──────────────────────────────────────────────
 const rssParser = new Parser({
@@ -186,7 +187,10 @@ async function scrapeRSS(pub) {
 // HTML scrape
 async function scrapeHTML(pub) {
   try {
-    const res = await fetch(pub.url, { headers: FETCH_HEADERS, signal: AbortSignal.timeout(12000) });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+    const res = await fetch(pub.url, { headers: FETCH_HEADERS, signal: controller.signal });
+    clearTimeout(timeout);
     if (!res.ok) throw new Error(`Status code ${res.status}`);
     const html = await res.text();
     const $ = cheerio.load(html);
