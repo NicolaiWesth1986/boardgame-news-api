@@ -40,6 +40,7 @@ const RSS_PUBLISHERS = [
   { name: 'Pandasaurus Games',   url: 'https://pandasaurusgames.com/blogs/news.atom',  logo: '🐼' },
   { name: 'Grey Fox Games',      url: 'https://greyfoxgames.com/blogs/news.atom',      logo: '🦊' },
   { name: 'Chip Theory Games',   url: 'https://chiptheorygames.com/blogs/news.atom',   logo: '🎰' },
+  { name: 'Restoration Games', url: 'https://restorationgames.com/feed/', logo: '♻️' },
 ];
 
 // ── Publishers: HTML-scraping ───────────────────────────────
@@ -62,31 +63,6 @@ const HTML_PUBLISHERS = [
         const href  = linkEl.attr('href');
         const link  = href ? `https://www.czechgames.com${href}` : '';
         const image = imgEl.attr('src') || imgEl.attr('data-src') || null;
-        const summary = summaryEl.text().trim();
-
-        if (title && link) {
-          articles.push({ title, link, image, summary, date: new Date().toISOString() });
-        }
-      });
-      return articles;
-    }
-  },
-  {
-    name: 'Restoration Games',
-    logo: '♻️',
-    url: 'https://restorationgames.com/blogs/news',
-    scrape: ($) => {
-      const articles = [];
-      $('article, .article, .blog-post, .grid__item').slice(0, 5).each((i, el) => {
-        const titleEl = $(el).find('h2, h3, .article__title').first();
-        const linkEl  = $(el).find('a').first();
-        const imgEl   = $(el).find('img').first();
-        const summaryEl = $(el).find('p, .article__excerpt').first();
-
-        const title = titleEl.text().trim();
-        const href  = linkEl.attr('href');
-        const link  = href ? (href.startsWith('http') ? href : `https://restorationgames.com${href}`) : '';
-        const image = imgEl.attr('src') || null;
         const summary = summaryEl.text().trim();
 
         if (title && link) {
