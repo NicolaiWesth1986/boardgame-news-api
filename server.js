@@ -17,46 +17,41 @@ const rssParser = new Parser({
 });
 
 // ── Publishers ──────────────────────────────────────────────
+// Kun feeds der er bekræftet fungerende
 const PUBLISHERS = [
-  // ✅ Bekræftet fungerende
-  { name: 'Stonemaier Games',     url: 'https://stonemaiergames.com/feed/',                         logo: '🏆' },
-  { name: 'Cephalofair Games',    url: 'https://cephalofair.com/blogs/blog.atom',                   logo: '⚔️' },
-  { name: 'GMT Games',            url: 'https://insidegmt.com/feed/',                               logo: '🗺️' },
-  { name: 'Leder Games',          url: 'https://ledergames.com/blogs/news.atom',                    logo: '🦊' },
-  { name: 'Capstone Games',       url: 'https://capstone-games.com/blogs/news.atom',                logo: '🏛️' },
-  { name: 'Mindclash Games',      url: 'https://mindclashgames.com/news/feed/',                     logo: '🧠' },
-  { name: 'Earthborne Games',     url: 'https://earthbornegames.com/blog/feed/',                    logo: '🌿' },
-  { name: 'Bezier Games',         url: 'https://beziergames.com/blogs/news.atom',                   logo: '📐' },
-  { name: 'Thunderworks Games',   url: 'https://thunderworksgames.com/blogs/news.atom',             logo: '⚡' },
+  // WordPress-baserede (bruger /feed/)
+  { name: 'Stonemaier Games',     url: 'https://stonemaiergames.com/feed/',                logo: '🏆' },
+  { name: 'GMT Games (Inside)',    url: 'https://insidegmt.com/feed/',                     logo: '🗺️' },
+  { name: 'Mindclash Games',      url: 'https://mindclashgames.com/news/feed/',            logo: '🧠' },
+  { name: 'Earthborne Games',     url: 'https://earthbornegames.com/blog/feed/',           logo: '🌿' },
+  { name: 'Czech Games Edition',  url: 'https://czechgames.com/en/feed/',                  logo: '🎲' },
+  { name: 'Horrible Guild',       url: 'https://horribleguild.com/feed/',                  logo: '😈' },
+  { name: 'Lookout Games',        url: 'https://lookout-spiele.de/feed/',                  logo: '🔭' },
+  { name: 'Ares Games',           url: 'https://www.aresgames.eu/category/news/feed/',     logo: '⚡' },
 
-  // 🔧 Rettede URLs (Shopify .atom format)
-  { name: 'Czech Games Edition',  url: 'https://czechgames.com/en/feed/',                           logo: '🎲' },
-  { name: 'Lucky Duck Games',     url: 'https://luckyduckgames.com/blogs/news.atom',                logo: '🦆' },
-  { name: 'Alley Cat Games',      url: 'https://www.alleycatgames.com/blogs/news.atom',             logo: '🐱' },
-  { name: 'Pandasaurus Games',    url: 'https://pandasaurusgames.com/blogs/news.atom',              logo: '🐼' },
-  { name: 'Horrible Guild',       url: 'https://horribleguild.com/eu/feed/',                        logo: '😈' },
-  { name: 'Button Shy Games',     url: 'https://buttonshygames.com/blogs/news.atom',                logo: '🔘' },
-  { name: 'Osprey Games',         url: 'https://ospreypublishing.com/us/feed/',                     logo: '🦅' },
-  { name: 'Devir Games',          url: 'https://devirgames.com/blogs/news.atom',                    logo: '🌍' },
-  { name: 'Awaken Realms',        url: 'https://awakenrealms.com/blogs/news.atom',                  logo: '🌟' },
-  { name: 'Grey Fox Games',       url: 'https://greyfoxgames.com/blogs/news.atom',                  logo: '🦊' },
-  { name: 'Flatout Games',        url: 'https://flatout.games/blogs/news.atom',                     logo: '🃏' },
-  { name: 'Restoration Games',    url: 'https://restorationgames.com/blogs/news.atom',              logo: '♻️' },
-  { name: 'Lookout Games',        url: 'https://lookout-spiele.de/en/feed/',                        logo: '🔭' },
-  { name: 'Inside Up Games',      url: 'https://insideupgames.com/blogs/news.atom',                 logo: '🔼' },
-  { name: 'Pencil First Games',   url: 'https://pencilfirstgames.com/blogs/news.atom',              logo: '✏️' },
-  { name: 'Archon Studio',        url: 'https://archon-studio.com/blogs/news.atom',                 logo: '🏰' },
-  { name: 'Big Potato Games',     url: 'https://bigpotato.com/blogs/news.atom',                     logo: '🥔' },
-  { name: 'Chip Theory Games',    url: 'https://chiptheorygames.com/blogs/news.atom',               logo: '🎰' },
-  { name: 'Renegade Game Studios',url: 'https://renegadegamestudios.com/blog/rss.xml',              logo: '🎭' },
-
-  // ➕ Ekstra publishers med kendte fungerende feeds
-  { name: 'Asmodee',              url: 'https://www.asmodee.com/en/news/feed/',                     logo: '♟️' },
-  { name: 'CMON',                 url: 'https://cmon.com/feed/',                                    logo: '🎨' },
-  { name: 'Ares Games',           url: 'https://www.aresgames.eu/category/news/feed/',              logo: '⚡' },
-  { name: 'Gale Force Nine',      url: 'https://www.gf9games.com/feed/',                            logo: '9️⃣' },
-  { name: 'Pandasaurus Games',    url: 'https://pandasaurusgames.com/blogs/news.atom',              logo: '🐼' },
-  { name: 'Allplay',              url: 'https://www.allplay.com/blogs/news.atom',                   logo: '🎯' },
+  // Shopify-baserede (bruger /blogs/news.atom)
+  { name: 'Cephalofair Games',    url: 'https://cephalofair.com/blogs/blog.atom',          logo: '⚔️' },
+  { name: 'Leder Games',          url: 'https://ledergames.com/blogs/news.atom',           logo: '🦊' },
+  { name: 'Capstone Games',       url: 'https://capstone-games.com/blogs/news.atom',       logo: '🏛️' },
+  { name: 'Bezier Games',         url: 'https://beziergames.com/blogs/news.atom',          logo: '📐' },
+  { name: 'Thunderworks Games',   url: 'https://thunderworksgames.com/blogs/news.atom',    logo: '⚡' },
+  { name: 'Lucky Duck Games',     url: 'https://luckyduckgames.com/blogs/news.atom',       logo: '🦆' },
+  { name: 'Pandasaurus Games',    url: 'https://pandasaurusgames.com/blogs/news.atom',     logo: '🐼' },
+  { name: 'Button Shy Games',     url: 'https://buttonshygames.com/blogs/news.atom',       logo: '🔘' },
+  { name: 'Devir Games',          url: 'https://devirgames.com/blogs/news.atom',           logo: '🌍' },
+  { name: 'Awaken Realms',        url: 'https://awakenrealms.com/blogs/news.atom',         logo: '🌟' },
+  { name: 'Grey Fox Games',       url: 'https://greyfoxgames.com/blogs/news.atom',         logo: '🦊' },
+  { name: 'Flatout Games',        url: 'https://flatout.games/blogs/news.atom',            logo: '🃏' },
+  { name: 'Restoration Games',    url: 'https://restorationgames.com/blogs/news.atom',     logo: '♻️' },
+  { name: 'Inside Up Games',      url: 'https://insideupgames.com/blogs/news.atom',        logo: '🔼' },
+  { name: 'Pencil First Games',   url: 'https://pencilfirstgames.com/blogs/news.atom',     logo: '✏️' },
+  { name: 'Archon Studio',        url: 'https://archon-studio.com/blogs/news.atom',        logo: '🏰' },
+  { name: 'Big Potato Games',     url: 'https://bigpotato.com/blogs/news.atom',            logo: '🥔' },
+  { name: 'Chip Theory Games',    url: 'https://chiptheorygames.com/blogs/news.atom',      logo: '🎰' },
+  { name: 'Alley Cat Games',      url: 'https://www.alleycatgames.com/blogs/news.atom',    logo: '🐱' },
+  { name: 'Allplay',              url: 'https://www.allplay.com/blogs/news.atom',          logo: '🎯' },
+  { name: 'Osprey Games',         url: 'https://ospreypublishing.com/blogs/news.atom',     logo: '🦅' },
+  { name: 'Renegade Game Studios',url: 'https://renegadegamestudios.com/blogs/news.atom',  logo: '🎭' },
 ];
 
 // ── Scraper helpers ──────────────────────────────────────────
